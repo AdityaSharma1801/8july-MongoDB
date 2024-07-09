@@ -1,0 +1,185 @@
+			DML COMMANDS
+
+show dbs
+
+show collections
+
+db.product.find()
+
+db.users.find()
+
+db.users.find({gender:'Male'})
+                  [FILTERS] 
+
+db.users.find({gender:"Female",city:"Jaipur"})
+                        [INPLICITE AND OPERATOR]
+
+db.users.find({city:"Jaipur",salary:450000})
+
+db.users.find({role:"customer",gender:'Male'})
+
+ db.users.find({role:'admin',city:'Jaipur'})
+
+db.users.find({city:'Kolkata',username:/^R/})
+
+db.users.find({useremail:/@gmail.com/})
+
+
+
+db.users.find({skills:['Java','Python']})
+[
+  {
+    _id: ObjectId('668cb4058b05cb05a5d40c11'),
+    id: '1',
+    username: 'Prajjal Dhar',
+    useremail: 'prajjal.dhar@gmail.com',
+    password: 'Regex1234',
+    firstName: 'Prajjal',
+    lastName: 'Dhar',
+    role: 'admin',
+    gender: 'Male',
+    age: 28,
+    city: 'Goa',
+    salary: 300000,
+    skills: [ 'Java', 'Python' ]   //implicite and very strict with order......no index swap
+  }
+]
+
+
+
+
+			OPERATORS
+1.$all
+2.$and
+3.$or
+4.$nor
+5.$ne
+6.$exist
+7.$eq
+
+
+
+db.users.find({skills:{"$all":["Python","Java"]}})  //CORRECT METHOD
+
+
+ db.users.find({role:"customer", gender:"Female",skills:{"$all":["C++","Python","Java"]}})
+[
+  {
+    _id: ObjectId('668cb4058b05cb05a5d40c12'),
+    id: '2',
+    username: 'Shakshi Karamchandani',
+    useremail: 'shakshi.karamchandani@yahoo.com',
+    password: 'shakshi123',
+    firstName: 'shakshi',
+    lastName: 'karamchandani',
+    role: 'customer',
+    gender: 'Female',
+    age: 32,
+    city: 'New Delhi',
+    salary: 500000,
+    skills: [ 'Python', 'C++', 'Java', 'Os' ]
+  }
+]
+
+
+db.users.find({role:"customer",username:/Karamchandani/})
+
+db.users.find({skills:"Java",skills:{"$ne":"Python"}})
+
+db.users.find({skills:{"$ne":["Java","C++"]}})
+
+db.users.find({skills:{"$nin":["Java","C++"]}})  
+
+
+db.users.find({ role: "admin", useremail: /@regexsoftware.com$/ })
+
+ db.users.find({username:{"$regex":"^A.*a$"}})
+             regular expression REGEX-------TO USE MORE THAN 1 OPERATORS
+
+
+ db.users.find({role:"customer",username:{"$regex":"^a.*a$","$options":"i"}})
+             i--------case insensitive
+
+db.users.find({role:"admin",useremail:{"$not":/@gmail.com$/}})
+
+
+
+
+
+
+
+	"EXPLICITE AND" & OR
+
+
+
+
+
+{"$or":[{city:"Hyderabad"},{role:"admin"}]}
+
+$gt
+$gte
+$lt
+$lte
+$eq
+$ne
+
+
+
+
+{salary:{"$gt":450000}}
+
+{salary:{"$gte":450000,"$lt":800000}}
+
+		or we can use
+
+{$and:[{salary:{"$gte":450000}},{salary:{"$lt":800000}}]}
+
+
+{"$or":[{city:"New Delhi"},{city:"Mumbai"}]}
+
+{role:"admin",firstName:{$ne:"Rahul"}}
+
+{role:"admin",username:{"$not":/^Rahul/}}
+
+{gender:"Male",salary:{"$gt":400000}}
+
+
+
+
+
+			GRAPH QL
+-To reduce overburden of data snet by mongo
+-we use projection
+
+
+db.users.find({role:"admin",salary:{$gt:1000000}},{"username":1})
+							FILTER AGGEREGATION
+
+ db.users.find({role:"admin",salary:{$gt:1000000}},{"username":1,"role":1,"_id":0})
+								FILTER AGGEREGATION
+
+
+Q- users with at least 3 skills      {"skills.3":{$exists:true}}
+Q- users that are not admin          {role:{"$not":/admin/}}
+
+
+
+{"skills.3":{$exists:true}}
+
+{"role":{$exists:true}}
+
+{"role":{$exists:false}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

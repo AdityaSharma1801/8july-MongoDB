@@ -1,0 +1,121 @@
+
+		JSON - javascript object notation
+
+- a text-based format for representing structured data
+
+- JSON is built from one or more keys and values:
+> Key: Any string
+> Value: Can be a string, number, array, additional object, or the literals, false, true and null
+
+-----------------------------------------------------------------
+
+Json file upload on MongoDB atlas
+
+. is a membership operator
+
+skit_interns.users
+(class)         (object)
+
+
+
+#Database-------array of collections
+#collections----array of documents     between []
+#documents   between {}
+
+
+3 METHODS TO INSERT DATA IN JSON
+1.COMPASS
+2.VsCode
+3.SHELL
+
+
+			COMPASS
+copy link
+save json file via VSCODE
+import json file into compass
+check on atlas
+----------------------------------------------------------------
+
+			VsCODE
+Connect to Vscode by pasting link from atlas
+change the name of DB and collections
+Run
+Find the DB
+Left click on the collection within the DB
+click on insert document
+
+// The current database to use.
+use('Skit_intern');
+
+// Create a new document in the collection.
+db.getCollection('users').insertMany( [ .....{documents}...] )
+
+
+ADVANTAGE.....UNIQUE ID CREATED no matter what user have given or not
+
+ "0": {
+      "$oid": "668b731d9a9f69a5c7579476"
+    },
+    "1": {
+      "$oid": "668b731d9a9f69a5c7579477"
+    },
+    "2": {
+      "$oid": "668b731d9a9f69a5c7579478"
+    },...................
+
+
+oid=object id
+
+----------------------------------------------------------------
+
+			    SHELL
+
+copy link from atlas
+enter password
+ 
+////after this it will not remain a command prompt rather it will become a online remote system
+///CROSS PLATFORM COMPATIBILITY
+show dbs
+
+ 		DML Commands
+use apple
+use skit_intern
+use sflix
+
+db.createCollection('users')
+ now show dbs
+//sflix will be present
+
+
+Atlas atlas-w67s5p-shard-0 [primary] sfilx> db.users.insertOne({id:2,productname:"Apple",productdesc:"xyz",price:12.0})
+
+
+Atlas atlas-w67s5p-shard-0 [primary] sfilx> db.users.find()
+[
+  { _id: ObjectId('668b8fc649e3390c72cc8988'), id: 1 },
+  {
+    _id: ObjectId('668b902949e3390c72cc8989'),
+    id: 2,
+    productname: 'Apple',
+    productdesc: 'xyz',
+    price: 12
+  }
+]
+
+ db.users.drop()
+
+db.dropDatabase()
+
+
+-------------------------------------------------------
+
+
+	Mongodb assignment 08thjuly2024
+
+
+1.you have to create a new database and add collection name as product
+2. using compass, using vscode, using shell
+
+
+
+
