@@ -2,6 +2,7 @@
 -involves some calculations
 
 AGGREGATION PIPELINE
+----An aggregation pipeline in MongoDB is a series of stages that process documents, transforming them as they pass through the pipeline. Each stage performs an operation on the input documents, such as filtering, grouping, or calculating values. The output from each stage is passed to the next stage. This sequential data processing allows for complex transformations and computations on the data.
 
 horizontal scaling is sharding (for eg: disk partition / grouping)
 
