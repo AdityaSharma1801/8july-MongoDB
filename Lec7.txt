@@ -1,0 +1,397 @@
+	AGGREGATION
+-involves some calculations
+
+AGGREGATION PIPELINE
+
+horizontal scaling is sharding (for eg: disk partition / grouping)
+
+vertical scaling ---existing system hardware increase
+
+
+[
+  { $match: {
+  gender:"Female",
+  city:"Jaipur",
+  skills:"Python"
+  }
+  }
+]
+
+
+
+[
+  {
+    $match:{
+      city:"New Delhi",
+      salary:{$gt:500000}
+    }
+  }
+]
+
+
+[
+  {
+    $match:{
+      city:{$in:["Mumbai","Hyderabad","New Delhi"]}
+    }
+  }
+]
+
+
+[
+  {
+    $group: {
+      _id:"$city",
+      countofcity:{$sum:1}
+      }
+    }
+]
+
+equitablity-----changes are not reflected in the original document
+
+
+
+[
+  {
+    $group: {
+      _id:"$city",
+      countofcity:{$sum:1}
+      }
+    },
+  {
+    $project:{
+      city:"$_id",
+      countofcity:1,                      //2nd stage of pipeline
+    }
+  }
+]
+
+
+
+
+[
+  {
+    $group: {
+      _id:"$gender",
+      countofgender:{$sum:1}
+      }
+    }
+]
+
+
+
+[
+  {
+    $match:{
+      city:"Hyderabad"
+    }
+  },
+  {
+    $count: 'totalusersinhyderabad'
+  }
+]
+
+
+
+[
+  {
+    $match:{
+      gender:"Male"
+    }
+  },
+  {
+    $count: 'countofmaleusers'
+  }
+]
+
+
+
+[
+  {
+    $match:{
+      gender:"Female",
+      city:"Jaipur"
+    }
+  },
+  {
+    $count: 'countoffemaleusersfromjaipur'
+  }
+]
+
+
+
+[
+  {$match:{
+    city:"Jaipur"
+ }
+  },
+  {
+   $group: {
+     _id:"$gender",
+     noofusers:{$sum:1}
+     }
+   }
+]
+
+
+
+
+[
+  {
+    $match: {
+    gender:"Female"
+    }
+  },
+  {
+   $group: {
+     _id:"$city",   
+     nooffusers:{$sum:1}
+   }
+   }
+]
+
+
+
+
+[
+  {
+    $match: {
+    gender:"Male",
+      city:"New Delhi",
+      skills:"SQL"
+    }
+  },
+    {
+    $count: 'countofusers'
+  }
+]
+
+
+
+
+
+[
+  {
+    $match: {
+    gender:"Female",
+      city:"Goa",
+      age:{$gt:24},
+      skills:{$all:["Python","C++"]}
+    }
+  },
+    {
+    $count: 'countofusers'
+  }
+]
+
+
+
+
+[
+{
+  $group: {
+    _id:"$role",
+    averagesalary:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    role:"4_id",
+    averagesalary:1,
+      minsal:1,
+      maxsal:1
+    }
+  }
+]
+
+
+
+
+[
+{
+  $group: {
+    _id:"$city",
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    role:"$city",
+    averagesal:1,
+      minsal:1,
+      maxsal:1
+    }
+  }
+]
+
+
+
+
+[
+{
+  $match: {
+  gender:"Female"
+  }
+},
+  {
+  $group: {
+    _id:"$gender",
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    role:"$_id",
+    averagesal:1,
+      minsal:1,
+      maxsal:1,
+    }
+  }
+]
+
+
+
+
+[
+{
+  $match: {
+  gender:"Male",
+    city:"Hyderabad"
+  }
+},
+  {
+  $group: {
+    _id:"$city",
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    role:"$_id",
+    averagesal:1,
+      minsal:1,
+      maxsal:1,
+      gender:"Male"
+    }
+  }
+]
+
+
+
+
+
+
+
+[
+{
+  $match: {
+  gender:"Male",
+    skills:{$in:["Python","Java"]}
+  }
+},
+  {
+  $group: {
+    _id:null,
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    _id:0,
+    averagesal:1,
+      minsal:1,
+      maxsal:1,
+      }
+  }
+]
+
+
+
+
+[
+{
+  $match: {
+  role:"customer",
+    skills:"HTML",skills:{"$ne":"CSS"}      //important
+  }
+},
+  {
+  $group: {
+    _id:null,
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    _id:0,
+    averagesal:1,
+      minsal:1,
+      maxsal:1,
+      }
+  }
+
+  
+  ]
+
+
+
+
+[
+{
+  $match: {
+  role:"customer",
+    useremail:{"$ne":"@gmail.com"},
+  }
+},
+    {
+    $count: 'Numberofpeople'
+  }
+]
+
+
+
+
+
+[
+{
+  $match: {
+  role:"admin",
+    "skills.2":{$exists:false}},       //important //the third element in the skills array does not exist, implying that the array has fewer than three elements.
+  },
+  {
+  $group: {
+    _id:null,
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+  }
+},
+  {
+    $project: {
+    _id:0,
+    averagesal:1,
+      minsal:1,
+      maxsal:1,
+      }
+  }
+
+]
+
+skills.0 refers to the first element.
+skills.1 refers to the second element.
+skills.2 refers to the third element.
+
+skills.2: { $exists: true } checks if the third element exists, which means the array has at least three elements.
+skills.2: { $exists: false } checks if the third element does not exist, which means the array has fewer than three elements.
