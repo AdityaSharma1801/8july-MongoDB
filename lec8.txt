@@ -1,0 +1,97 @@
+Assignment
+
+using product.json create multiple queries and make a ppt which help you to show all the fact and figures like filtering documents, providing average, max,min and all aggregation pipelines 
+
+
+solve minimum 25 questions based on queries make the proper presentation
+
+you can use any other data set if you would like to choose 
+1. coffee shop
+2. covid data
+3. ipl dataset
+4. pizza dataset
+
+KAGGLE DATASETS
+
+--------------------------------------------------------------------
+
+#### UNWINDING CONCEPT ########
+[
+  {
+    $unwind: "$skills"    //Document Temporaray size m*n {object of object of array}
+  },
+  {
+    $group: {
+      _id:"$skills",
+      countofusers:{$sum:1}
+    }
+  }
+]
+
+
+
+
+[
+  {
+    $unwind: "$skills"
+  },
+  {
+    $group: {
+    _id:"$skills",
+    countofusers:{$sum:1},
+    averagesal:{$avg:"$salary"},
+    minsal:{$min:"$salary"},
+    maxsal:{$max:"$salary"}
+    }
+  },
+  {
+    $sort: {
+    countofusers:-1
+    }
+  }
+]
+
+
+find avg no of skills per user in each city
+
+
+[
+  {
+    $unwind: "$skills"
+  },
+  {
+    $group: {
+      _id:{skills:"$skills",city:"$city"},
+      skillcount:{$sum:1},
+      maxsal:{$max:"$salary"},
+      avgsal:{$avg:"$salary"}
+    
+    }
+  }
+]
+
+
+
+city and gender groups and avg male how many skills and avg female how many skills
+
+[
+  {
+  $addFields: {                        //addFields pipeline to add new fields
+    noofskills:{$size:"$skills"}
+  }
+},
+   {
+    $group: {
+      _id:{gender:"$gender",city:"$city"},
+      avgskills:{$avg:"$noofskills"},
+--------countofskill:{$sum:1}----------WRONG THIS IS THE SUM OF DOCUMENTS
+    }
+  },
+  {
+    $project: {
+      gender:"$_id.gender",   //id ke inside gender
+      city:"$_id.city",       //id ke inside city
+      avgskills:1
+    }
+  }
+]
