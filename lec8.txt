@@ -12,7 +12,7 @@ you can use any other data set if you would like to choose
 4. pizza dataset
 
 KAGGLE DATASETS
-
+Kaggle is a popular website for data science competitions that offers free public datasets for learning machine learning (ML) and artificial intelligence (AI). Users can also use Kaggle datasets to build AI models, publish their own datasets, and collaborate with other data scientists and machine learning engineers
 --------------------------------------------------------------------
 
 #### UNWINDING CONCEPT ########
