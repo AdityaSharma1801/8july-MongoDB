@@ -1,0 +1,366 @@
+MongoDB SKIT- Test 
+Total points
+39/40
+Complete all questions
+The respondent's email (sharmaaditya18012004@gmail.com) was recorded on submission of this form.
+ 
+What is the primary purpose of the MongoDB aggregation framework?
+*
+1/1
+Data insertion
+Data querying
+Data transformation and aggregation  	[CORRECT]
+ 
+Data deletion
+ 
+Which stage in an aggregation pipeline is used to filter documents?
+*
+1/1
+$group
+$match[CORRECT]
+ 
+$sort
+$project
+ 
+In the aggregation pipeline, which operator is used to group documents by a specified identifier?
+*
+1/1
+$match
+$project
+$group[CORRECT]
+ 
+$sort
+ 
+Which stage in the aggregation pipeline is used to reshape each document in the stream, such as adding new fields or removing existing fields?
+*
+1/1
+match
+$group
+$project[CORRECT]
+ 
+$limit
+ 
+How can you limit the number of documents passing through an aggregation pipeline?
+*
+1/1
+Using the $skip stage
+Using the $limit stage[CORRECT]
+ 
+Using the $match stage
+Using the $sort stage
+ 
+Which of the following stages is used to unwind an array field in the documents?
+*
+1/1
+$match
+$group
+$unwind[CORRECT]
+ 
+$project
+ 
+What does the $lookup stage in the aggregation pipeline do?
+*
+1/1
+Performs a join with another collection[CORRECT]
+ 
+Filters documents
+Groups documents
+Limits documents
+ 
+Which stage in the aggregation pipeline would you use to calculate the sum of a field across multiple documents?
+*
+1/1
+$project
+$group[CORRECT]
+ 
+$match
+$limit
+ 
+In an aggregation pipeline, what is the purpose of the $sort stage?
+*
+1/1
+To filter documents
+To group documents
+To sort documents[CORRECT]
+ 
+To reshape documents
+ 
+Which stage in an aggregation pipeline can be used to handle pagination along with $skip?
+*
+1/1
+$project
+$limit[CORRECT]
+ 
+$sort
+$match
+ 
+What is sharding in MongoDB?
+*
+1/1
+Replicating data across multiple servers
+Dividing data into smaller, more manageable pieces[CORRECT]
+ 
+Indexing data for faster retrieval
+Backing up data to prevent loss
+ 
+Which component in a sharded MongoDB cluster directs queries to the appropriate shard?
+*
+1/1
+Shard
+Config server
+Query router (mongos)[CORRECT]
+ 
+Replica set
+ 
+Which of the following best describes a monolithic architecture?
+*
+1/1
+A single, unified application[CORRECT]
+ 
+A collection of loosely coupled services
+An architecture where services are distributed across multiple servers
+A data storage technique
+ 
+What is a primary advantage of a distributed architecture over a monolithic architecture?
+*
+1/1
+Easier to deploy
+Scalability and fault tolerance[CORRECT]
+ 
+Simplicity in development
+Single point of failure
+ 
+In a distributed architecture, how is data usually managed across different services?
+*
+1/1
+Each service manages its own data[CORRECT]
+ 
+All services share a single database
+Data is managed by a central coordinator
+Data is replicated in each service
+ 
+Which operator would you use to select documents where a field value is greater than a specified value?
+*
+1/1
+$lt
+$lte
+$gte[CORRECT]
+ 
+$ne
+ 
+What does the $in operator do in a MongoDB query?
+*
+1/1
+Matches values that are greater than a specified value
+Matches values that are less than a specified value
+Matches any of the values specified in an array[CORRECT]
+ 
+Matches values that do not exist
+ 
+Which operator is used to select documents where the value of a field is not equal to a specified value?
+*
+1/1
+$ne[CORRECT]
+ 
+$eq
+$gt
+$lt
+ 
+How do you check for the existence of a field in a MongoDB document?
+*
+1/1
+Using the $exists operator[CORRECT]
+ 
+Using the $type operator
+Using the $eq operator
+Using the $in operator
+ 
+Which operator would you use to find documents that do not contain a specific field?
+*
+1/1
+$exists: false[CORRECT]
+ 
+$exists: true
+$eq
+$ne
+ 
+What does the $elemMatch operator do in a MongoDB query?
+*
+1/1
+Matches documents where the value of a field is an array
+Matches documents that contain an array field with at least one element that matches all the specified query criteria[CORRECT]
+ 
+Matches documents where the value of a field is greater than a specified value
+Matches documents where the value of a field is a string
+ 
+How can you select documents where a field value is between two specified values, inclusive?
+*
+1/1
+Using $gt and $lt operators
+Using $gte and $lte operators[CORRECT]
+ 
+Using $ne and $eq operators
+Using $in and $nin operators
+ 
+Which operator would you use to perform a logical AND operation in a MongoDB query?
+*
+1/1
+$or
+$and[CORRECT]
+ 
+$nor
+$not
+ 
+Which operator would you use to select documents where the value of a field is one of several possible values?
+*
+1/1
+$or[CORRECT]
+ 
+$and
+$nor
+$not
+ 
+Which operator would you use to select documents where the value of a field is one of several possible values?
+*
+1/1
+$nin
+$exists
+$in[CORRECT]
+ 
+$type
+ 
+How do you use the $regex operator in a MongoDB query?
+*
+1/1
+To match documents where a field value matches a specified regular expression[CORRECT]
+ 
+To match documents where a field value is an array
+To match documents where a field value is a string
+To match documents where a field value is greater than a specified value
+ 
+Which aggregation stage is used to create new documents from every input document by applying a sequence of stages?
+*
+0/1
+$project[CORRECT]
+$unwind
+$facet
+$bucket
+Correct answer
+$project
+ 
+What does the $bucket stage do in an aggregation pipeline?
+*
+1/1
+Groups documents into buckets based on a specified expression
+ 
+Reshapes documents
+Filters documents
+Limits documents
+ 
+In which stage would you use $push to add an element to an array?
+*
+1/1
+$group[CORRECT]
+ 
+$match
+$project
+$sort
+ 
+What does the $facet stage do in an aggregation pipeline?
+*
+1/1
+Splits a pipeline into multiple sub-pipelines[CORRECT]
+ 
+Filters documents
+Groups documents
+Sorts documents
+ 
+Which stage in the aggregation pipeline is used to compute the average value of a field?
+*
+1/1
+$sum
+$avg[CORRECT]
+ 
+$count
+$max
+ 
+How do you perform a case-insensitive search in MongoDB using a regular expression?
+*
+1/1
+Using the $regex operator with the i option[CORRECT]
+ 
+Using the $in operator
+Using the $text operator
+Using
+ 
+Which MongoDB operator would you use to find all orders placed within the last 7 days?
+*
+1/1
+$gte
+$lte[CORRECT]
+ 
+$in
+$exists
+ 
+How can you aggregate orders to calculate the total revenue generated from all orders?
+*
+1/1
+$match
+$sum[CORRECT]
+ 
+$group
+$count
+ 
+Which aggregation pipeline stage can be used to count the number of orders placed by each user?
+*
+1/1
+$project
+$group[CORRECT]
+ 
+$match
+$sort
+ 
+How would you filter the products collection to find all products that are currently out of stock?
+*
+1/1
+{ stock: { $eq: 0 } }[CORRECT]
+ 
+{ stock: { $gt: 0 } }
+{ stock: { $lt: 0 } }
+{ stock: { $ne: 0 } }
+ 
+Which aggregation stage would you use to find the average price of products in the products collection?
+*
+1/1
+$match
+$project[CORRECT]
+$avg
+$group
+ 
+ 
+What operator would you use to update the price of all products in a specific category by 10%?
+*
+1/1
+$set
+$inc
+$mul[CORRECT]
+ 
+$add
+ 
+Which MongoDB operator would you use to find all cars manufactured by a specific brand?
+*
+1/1
+$eq[CORRECT]
+ 
+$regex
+$gte
+$in
+ 
+How would you filter the cars collection to find all cars that were manufactured after the year 2015?
+*
+1/1
+{ year: { $lte: 2015 } }
+{ year: { $eq: 2015 } }
+{ year: { $gt: 2015 } }[CORRECT]
+ 
+{ year: { $ne: 2015 } }
